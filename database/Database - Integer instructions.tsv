@@ -59,4 +59,11 @@ Row ID	Mnemonic	Synopsys	Opcode	Supplemental Word #1	Supplemental Word #2	Domain
 58	CHK	CHK <ea>,Dn	0100.nnn.ss0.eee.aaa					x		2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x			x																																					If Dn < 0 or Dn > Source Then TRAP		
 59	CHK	CHK <ea>,Dn	0100.nnn.ss0.eee.aaa						x	2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x			x																																					If Dn < 0 or Dn > Source Then TRAP	x	
 60	CHK2	CHK <ea>,Rn	0000.0ss.011.eee.aaa	R.nnn.100.000.000.000			x	x	x	2	x			x			x	x	x	x	x	x	x	x	x	x	x	x				x	x																																				If Rn < LB or Rn > UB Then TRAP	x	
-61	CLR	CLR <ea>	0100.001.0ss.eee.aaa				x	x	x	1	x	x		x	x	x	x	x	x	x	x						x	x																																											
+61	CLR	CLR <ea>	0100.001.0ss.eee.aaa				x	x	x	1	x	x		x	x	x	x	x	x	x	x						x	x																																									0 → Destination		
+62	CMP	CMP <ea>,Dn	1101.nnn.000.eee.aaa				x			2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x			x																																					Destination – Source → cc		
+63	CMP	CMP <ea>,Dn	1101.nnn.001.eee.aaa					x		2	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x			x																																					Destination – Source → cc		
+64	CMP	CMP <ea>,Dn	1101.nnn.010.eee.aaa						x	2	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x			x																																					Destination – Source → cc		
+65	CMPA	CMPA <ea>,An	1011.nnn.011.eee.aaa					x		2	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x		x		x																																				Destination – Source → cc		
+66	CMPA	CMPA <ea>,An	1011.nnn.111.eee.aaa						x	2	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x		x		x																																				Destination – Source → cc		
+67	CMPI	CMPI #<data>,<ea>	0000.110.0ss.eee.aaa				x	x	x	2																			x		x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x																					Destination – Immediate data → cc		
+68	CMPM	CMPM (Ay)+,(Ax)+	1011.xxx.1ss.001.yyy				x	x	x	2	x				x																				x																																		Destination – Source → cc		
