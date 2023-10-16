@@ -71,3 +71,9 @@ Row ID	Mnemonic	Synopsys	Opcode	Supplemental Word #1	Supplemental Word #2	Domain
 70	CMP2	CMP2 <ea>,Rn	0000.0ss.011.eee.aaa	R.nnn.000.000.000.000			x	x	x	2	x			x			x	x	x	x	x	x	x	x	x	x	x	x			x	r	r																																					Compare Rn<LB or Rn>UB and Set Condition Codes	x			
 71	cpBcc	cpBcc #<data>	1111.ppp.01s.ccc.ccc	opt. coproc. ext. words	1,2,more ?			x	x	1																				16:32																																								If cpcc True Then Scan PC + dn → PC	x			x
 72	cpDBcc	cpDBcc Dn,#<data>	1111.ppp.001.001.nnn	0000.000.000.ccc.ccc	opt.coproc. ext. words			x		2	x	x																																						16																				If cpcc False Then (Dn – 1 → Dn; If Dn ≠ – 1 Then Scan PC + dn → PC)	x			x
+73	cpGEN	cpGEN #<command>	1111.ppp.000.eee.aaa	coproc. command word	e.a. or coproc. ext. words					1	?	?	?	?	?	?	?	?	?	?	?	?	?	?	?	?	?	?	?																																									Pass Command Word to Coprocessor	x			
+74	cpScc	cpScc <ea>	1111.ppp.001.eee.aaa	0000.000.000.ccc.ccc	e.a. or coproc. ext. words					1	x	x		x	x	x	x	x	x	x	x						x	x																																										If cpcc True Then 1s → Destination Else 0s → Destination	x			
+75	cpTRAPcc	cpTRAPcc	1111.ppp.001.111.100	0000.000.000.ccc.ccc	opt.coproc. ext. words					0																																																												If cpcc True Then TRAP	x			
+76	cpTRAPcc	cpTRAPcc #<data16>	1111.ppp.001.111.010	0000.000.000.ccc.ccc	opt.coproc. ext. words					1																			16																																									If cpcc True Then TRAP	x			
+77	cpTRAPcc	cpTRAPcc #<data32>	1111.ppp.001.111.011	0000.000.000.ccc.ccc	opt.coproc. ext. words					1																			32																																									If cpcc True Then TRAP	x			
+78	DBcc	DBcc Dn,#<data16>	0101.cccc.11.001.nnn							2	x	x																																						16																								
