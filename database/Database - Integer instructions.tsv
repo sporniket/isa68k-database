@@ -77,3 +77,7 @@ Row ID	Mnemonic	Synopsys	Opcode	Supplemental Word #1	Supplemental Word #2	Domain
 76	cpTRAPcc	cpTRAPcc #<data16>	1111.ppp.001.111.010	0000.000.000.ccc.ccc	opt.coproc. ext. words					1																			16																																									If cpcc True Then TRAP	x			
 77	cpTRAPcc	cpTRAPcc #<data32>	1111.ppp.001.111.011	0000.000.000.ccc.ccc	opt.coproc. ext. words					1																			32																																									If cpcc True Then TRAP	x			
 78	DBcc	DBcc Dn,#<data16>	0101.cccc.11.001.nnn							2	x	x																																						16																				If Condition False Then (Dn – 1 → Dn; If Dn ≠ – 1 Then PC + dn → PC)				
+79	DIVS	DIVS <ea>,Dn	1000.nnn.111.eee.aaa					x		2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x		32		x																																						Destination ÷ Source → Destination				
+80	DIVS	DIVS <ea>,Dq	0100.110.001.eee.aaa	0.qqq.100.000.000.qqq					x	2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x		32		x																																						Destination ÷ Source → Destination	x			
+81	DIVS	DIVS <ea>,Dr:Dq	0100.110.001.eee.aaa	0.qqq.110.000.000.rrr					x	2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x		32		x:x																																						Destination ÷ Source → Destination	x			
+82	DIVSL	DIVSL <ea>,Dr:Dq	0100.110.001.eee.aaa	0.qqq.100.000.000.rrr					x	2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x		32		x:x																																						Destination ÷ Source → Destination	x			
