@@ -85,3 +85,24 @@ Row ID	Mnemonic	Synopsys	Opcode	Supplemental Word #1	Supplemental Word #2	Domain
 84	DIVU	DIVU <ea>,Dq	0100.110.001.eee.aaa	0.qqq.000.000.000.qqq					x	2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	32			x																																						[Unsigned] Destination(32 )÷ Source(32) → Destination(32) = quotient(32)	x			
 85	DIVU	DIVU <ea>,Dr:Dq	0100.110.001.eee.aaa	0.qqq.010.000.000.rrr					x	2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	32			x:x																																						[Unsigned] Destination(64:Dr.Dq) ÷ Source(32) → Destination(64) = remainder(32:Dr).quotient(32:Dq)	x			
 86	DIVUL	DIVUL <ea>,Dr:Dq	0100.110.001.eee.aaa	0.qqq.000.000.000.rrr					x	2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	32			x:x																																						[Unsigned] Destination(32:Dq) ÷ Source(32) → Destination(64) = remainder(32:Dr).quotient(32:Dq)	x			
+86	EOR	EOR Dn,<ea>	1011.nnn.1ss.eee.aaa				x	x	x	2		x																			x	x		x	x	x	x	x	x	x	x						x	x																						Source ⊕ Destination → Destination				
+86	EORI	EORI #<data>,<ea>	0000.101.0ss.eee.aaa				x	x	x	2																			x		x	x		x	x	x	x	x	x	x	x						x	x																						Immediate Data ⊕ Destination → Destination				
+86	EORI	EORI #<data8>,CCR	0000.101.000.111.100				x			2																			8		x																		CCR																					Source ⊕ CCR → CCR				
+86	EXG	EXG Dx,Dy	1100.xxx.101.000.yyy							2		x																			x	x																																						Dx ←→ Dy				
+86	EXG	EXG Ax,Ay	1100.xxx.101.001.yyy							2			x																		x		x																																					Ax ←→ Ay				
+86	EXG	EXG Dx,Ay	1100.xxx.110.001.yyy							2		x																			x		x																																					Dx ←→ Ay				
+86	EXT	EXT Dn	0100.100.010.000.nnn					x		1	x	x																																																										Destination Sign-Extended → Destination				
+86	EXT	EXT Dn	0100.100.011.000.nnn						x	1	x	x																																																										Destination Sign-Extended → Destination				
+86	EXTB	EXTB Dn	0100.100.111.000.nnn						x	1	x	x																																																										Destination Sign-Extended → Destination				
+86	ILLEGAL	ILLEGAL	0100.101.011.111.100							0																																																												SSP – 2 → SSP; Vector Offset → (SSP); SSP – 4 → SSP; PC → (SSP); SSP – 2 → SSP; SR → (SSP); Illegal Instruction Vector Address → PC				
+86	JMP	JMP <ea>	0100.111.011.eee.aaa							1	x			x			x	x	x	x	x	x	x	x	x	x	x	x																																										Destination Address → PC				
+86	JSR	JSR <ea>	0100.111.010.eee.aaa							1	x			x			x	x	x	x	x	x	x	x	x	x	x	x																																										SP – 4 → Sp; PC → (SP); Destination Address → PC				
+86	LEA	LEA <ea>,An	0100.nnn.111.eee.aaa						x	2	x			x			x	x	x	x	x	x	x	x	x	x	x	x					x																																					<ea> → An				
+86	LINK	LINK An,#<disp16>	0100.111.001.010.nnn					x		2	x			x																																				16																				SP – 4 → SP; An → (SP); SP → An; SP + dn → SP				
+86	LINK	LINK An,#<disp32>	0100.100.000.001.nnn						x	2	x			x																																				32																				SP – 4 → SP; An → (SP); SP → An; SP + dn → SP				
+86	LSL	LSL Dx,Dy	1110.xxx.1ss.101.yyy				x	x	x	2		x																			x	x																																						Destination Shifted By Count → Destination				
+86	LSL	LSL #<data3.8>,Dy	1110.xxx.1ss.001.yyy				x	x	x	2																			x		x	x																																						Destination Shifted By Count → Destination				
+86	LSL	LSL <ea>	1110.001.111.eee.aaa					x		1	x			x	x	x	x	x	x	x	x						x	x																																										Destination Word Shifted By 1 → Destination				
+86	LSR	LSR Dx,Dy	1110.xxx.0ss.101.yyy				x	x	x	2		x																			x	x																																						Destination Shifted By Count → Destination				
+86	LSR	LSR #<data3.8>,Dy	1110.xxx.0ss.001.yyy				x	x	x	2																			x		x	x																																						Destination Shifted By Count → Destination				
+86	LSR	LSR <ea>	1110.001.011.eee.aaa					x		1	x			x	x	x	x	x	x	x	x						x	x																																										Destination Word Shifted By 1 → Destination				
