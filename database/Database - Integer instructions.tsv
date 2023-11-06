@@ -39,16 +39,16 @@ Row ID	Mnemonic	Synopsys	Opcode	Supplemental Word #1	Supplemental Word #2	Domain
 38	BFSET	BFSET <ea>{offset:width}	1110.111.011.eee.aaa	0000.o.fffff.w.iiiii		B				1	x	x		x			x	x	x	x	x						x	x																																										1 → < bit field > of Destination				
 39	BFTST	BFTST <ea>{offset:width}	1110.100.011.eee.aaa	0000.o.fffff.w.iiiii		B				1	x	x		x			x	x	x	x	x						x	x																																										< bit field > of Destination				
 40	BKPT	BKPT #<data3>	0100.100.001.001.ddd							1																			3																																									Run Breakpoint Acknowledge Cycle; TRAP As Illegal Instruction				
-41	BRA	BRA <data8>	0110.0000.dddddddd							1																				8!{0,-1}																																								PC + Displacement → PC				
-42	BRA	BRA <data16>	0110.0000.00000000							1																				16																																								PC + Displacement → PC				
-43	BRA	BRA <data32>	0110.0000.11111111							1																				32																																								PC + Displacement → PC	x			
+41	BRA	BRA <disp8>	0110.0000.dddddddd							1																				8!{0,-1}																																								PC + Displacement → PC				
+42	BRA	BRA <disp16>	0110.0000.00000000							1																				16																																								PC + Displacement → PC				
+43	BRA	BRA <disp32>	0110.0000.11111111							1																				32																																								PC + Displacement → PC	x			
 44	BSET	BSET Dn,Dx	0000.nnn.111.000.xxx						x	2		x																			x	x																																						TEST ( < bit number > of Destination) → Z; 1 → < bit number > of Destination				
 45	BSET	BSET Dn,<ea>	0000.nnn.111.eee.aaa				x			2		x																			x			x	x	x	x	x	x	x	x						x	x																						TEST ( < bit number > of Destination) → Z; 1 → < bit number > of Destination				
 46	BSET	BSET #<data8>,Dx	0000.100.011.000.xxx						x	2																			8		x	x																																						TEST ( < bit number > of Destination) → Z; 1 → < bit number > of Destination				
 47	BSET	BSET #<data8>,<ea>	0000.100.011.eee.aaa				x			2																			8		x			x	x	x	x	x	x	x	x						x	x																						TEST ( < bit number > of Destination) → Z; 1 → < bit number > of Destination				
-48	BSR	BSR <data8>	0110.0001.dddddddd							1																				8!{0,-1}																																								SP – 4 → SP; PC → (SP); PC + dn → PC				
-49	BSR	BSR <data16>	0110.0001.00000000							1																				16																																								SP – 4 → SP; PC → (SP); PC + dn → PC				
-50	BSR	BSR <data32>	0110.0001.11111111							1																				32																																								SP – 4 → SP; PC → (SP); PC + dn → PC	x			
+48	BSR	BSR <disp8>	0110.0001.dddddddd							1																				8!{0,-1}																																								SP – 4 → SP; PC → (SP); PC + dn → PC				
+49	BSR	BSR <disp16>	0110.0001.00000000							1																				16																																								SP – 4 → SP; PC → (SP); PC + dn → PC				
+50	BSR	BSR <disp32>	0110.0001.11111111							1																				32																																								SP – 4 → SP; PC → (SP); PC + dn → PC	x			
 51	BTST	BTST Dn,Dx	0000.nnn.100.000.xxx						x	2		x																			x	x																																						TEST ( < bit number > of Destination) → Z				
 52	BTST	BTST Dn,<ea>	0000.nnn.100.eee.aaa				x			2		x																			x			x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x																					TEST ( < bit number > of Destination) → Z				
 53	BTST	BTST #<data8>,Dx	0000.100.000.000.xxx						x	2																			8		x	x																																						TEST ( < bit number > of Destination) → Z				
@@ -69,7 +69,7 @@ Row ID	Mnemonic	Synopsys	Opcode	Supplemental Word #1	Supplemental Word #2	Domain
 68	CMPI	CMPI #<data>,<ea>	0000.110.0ss.eee.aaa				x	x	x	2																			x		x											x	x																											Destination – Immediate data → cc			x	
 69	CMPM	CMPM (Ay)+,(Ax)+	1011.xxx.1ss.001.yyy				x	x	x	2	x				x																				x																																			Destination – Source → cc				
 70	CMP2	CMP2 <ea>,Rn	0000.0ss.011.eee.aaa	R.nnn.000.000.000.000			x	x	x	2	x			x			x	x	x	x	x	x	x	x	x	x	x	x			x	r	r																																					Compare Rn<LB or Rn>UB and Set Condition Codes	x			
-71	cpBcc	cpBcc #<data>	1111.ppp.01s.ccc.ccc	opt. coproc. ext. words	1,2,more ?			x	x	1																				16:32																																								If cpcc True Then Scan PC + dn → PC	x			x
+71	cpBcc	cpBcc #<disp>	1111.ppp.01s.ccc.ccc	opt. coproc. ext. words	1,2,more ?			x	x	1																				16:32																																								If cpcc True Then Scan PC + dn → PC	x			x
 72	cpDBcc	cpDBcc Dn,#<data>	1111.ppp.001.001.nnn	0000.000.000.ccc.ccc	opt.coproc. ext. words			x		2	x	x																																						16																				If cpcc False Then (Dn – 1 → Dn; If Dn ≠ – 1 Then Scan PC + dn → PC)	x			x
 73	cpGEN	cpGEN #<command>	1111.ppp.000.eee.aaa	coproc. command word	e.a. or coproc. ext. words					1	?	?	?	?	?	?	?	?	?	?	?	?	?	?	?	?	?	?	?																																									Pass Command Word to Coprocessor	x			
 74	cpScc	cpScc <ea>	1111.ppp.001.eee.aaa	0000.000.000.ccc.ccc	e.a. or coproc. ext. words					1	x	x		x	x	x	x	x	x	x	x						x	x																																										If cpcc True Then 1s → Destination Else 0s → Destination	x			
@@ -85,24 +85,24 @@ Row ID	Mnemonic	Synopsys	Opcode	Supplemental Word #1	Supplemental Word #2	Domain
 84	DIVU	DIVU <ea>,Dq	0100.110.001.eee.aaa	0.qqq.000.000.000.qqq					x	2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	32			x																																						[Unsigned] Destination(32 )÷ Source(32) → Destination(32) = quotient(32)	x			
 85	DIVU	DIVU <ea>,Dr:Dq	0100.110.001.eee.aaa	0.qqq.010.000.000.rrr					x	2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	32			x:x																																						[Unsigned] Destination(64:Dr.Dq) ÷ Source(32) → Destination(64) = remainder(32:Dr).quotient(32:Dq)	x			
 86	DIVUL	DIVUL <ea>,Dr:Dq	0100.110.001.eee.aaa	0.qqq.000.000.000.rrr					x	2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	32			x:x																																						[Unsigned] Destination(32:Dq) ÷ Source(32) → Destination(64) = remainder(32:Dr).quotient(32:Dq)	x			
-86	EOR	EOR Dn,<ea>	1011.nnn.1ss.eee.aaa				x	x	x	2		x																			x	x		x	x	x	x	x	x	x	x						x	x																						Source ⊕ Destination → Destination				
-86	EORI	EORI #<data>,<ea>	0000.101.0ss.eee.aaa				x	x	x	2																			x		x	x		x	x	x	x	x	x	x	x						x	x																						Immediate Data ⊕ Destination → Destination				
-86	EORI	EORI #<data8>,CCR	0000.101.000.111.100				x			2																			8		x																		CCR																					Source ⊕ CCR → CCR				
-86	EXG	EXG Dx,Dy	1100.xxx.101.000.yyy							2		x																			x	x																																						Dx ←→ Dy				
-86	EXG	EXG Ax,Ay	1100.xxx.101.001.yyy							2			x																		x		x																																					Ax ←→ Ay				
-86	EXG	EXG Dx,Ay	1100.xxx.110.001.yyy							2		x																			x		x																																					Dx ←→ Ay				
-86	EXT	EXT Dn	0100.100.010.000.nnn					x		1	x	x																																																										Destination Sign-Extended → Destination				
-86	EXT	EXT Dn	0100.100.011.000.nnn						x	1	x	x																																																										Destination Sign-Extended → Destination				
-86	EXTB	EXTB Dn	0100.100.111.000.nnn						x	1	x	x																																																										Destination Sign-Extended → Destination				
-86	ILLEGAL	ILLEGAL	0100.101.011.111.100							0																																																												SSP – 2 → SSP; Vector Offset → (SSP); SSP – 4 → SSP; PC → (SSP); SSP – 2 → SSP; SR → (SSP); Illegal Instruction Vector Address → PC				
-86	JMP	JMP <ea>	0100.111.011.eee.aaa							1	x			x			x	x	x	x	x	x	x	x	x	x	x	x																																										Destination Address → PC				
-86	JSR	JSR <ea>	0100.111.010.eee.aaa							1	x			x			x	x	x	x	x	x	x	x	x	x	x	x																																										SP – 4 → Sp; PC → (SP); Destination Address → PC				
-86	LEA	LEA <ea>,An	0100.nnn.111.eee.aaa						x	2	x			x			x	x	x	x	x	x	x	x	x	x	x	x					x																																					<ea> → An				
-86	LINK	LINK An,#<disp16>	0100.111.001.010.nnn					x		2	x			x																																				16																				SP – 4 → SP; An → (SP); SP → An; SP + dn → SP				
-86	LINK	LINK An,#<disp32>	0100.100.000.001.nnn						x	2	x			x																																				32																				SP – 4 → SP; An → (SP); SP → An; SP + dn → SP				
-86	LSL	LSL Dx,Dy	1110.xxx.1ss.101.yyy				x	x	x	2		x																			x	x																																						Destination Shifted By Count → Destination				
-86	LSL	LSL #<data3.8>,Dy	1110.xxx.1ss.001.yyy				x	x	x	2																			x		x	x																																						Destination Shifted By Count → Destination				
-86	LSL	LSL <ea>	1110.001.111.eee.aaa					x		1	x			x	x	x	x	x	x	x	x						x	x																																										Destination Word Shifted By 1 → Destination				
-86	LSR	LSR Dx,Dy	1110.xxx.0ss.101.yyy				x	x	x	2		x																			x	x																																						Destination Shifted By Count → Destination				
-86	LSR	LSR #<data3.8>,Dy	1110.xxx.0ss.001.yyy				x	x	x	2																			x		x	x																																						Destination Shifted By Count → Destination				
-86	LSR	LSR <ea>	1110.001.011.eee.aaa					x		1	x			x	x	x	x	x	x	x	x						x	x																																										Destination Word Shifted By 1 → Destination				
+87	EOR	EOR Dn,<ea>	1011.nnn.1ss.eee.aaa				x	x	x	2		x																			x	x		x	x	x	x	x	x	x	x						x	x																						Source ⊕ Destination → Destination				
+88	EORI	EORI #<data>,<ea>	0000.101.0ss.eee.aaa				x	x	x	2																			x		x	x		x	x	x	x	x	x	x	x						x	x																						Immediate Data ⊕ Destination → Destination				
+89	EORI	EORI #<data8>,CCR	0000.101.000.111.100				x			2																			8		x																		CCR																					Source ⊕ CCR → CCR				
+90	EXG	EXG Dx,Dy	1100.xxx.101.000.yyy							2		x																			x	x																																						Dx ←→ Dy				
+91	EXG	EXG Ax,Ay	1100.xxx.101.001.yyy							2			x																		x		x																																					Ax ←→ Ay				
+92	EXG	EXG Dx,Ay	1100.xxx.110.001.yyy							2		x																			x		x																																					Dx ←→ Ay				
+93	EXT	EXT Dn	0100.100.010.000.nnn					x		1	x	x																																																										Destination Sign-Extended → Destination				
+94	EXT	EXT Dn	0100.100.011.000.nnn						x	1	x	x																																																										Destination Sign-Extended → Destination				
+95	EXTB	EXTB Dn	0100.100.111.000.nnn						x	1	x	x																																																										Destination Sign-Extended → Destination				
+96	ILLEGAL	ILLEGAL	0100.101.011.111.100							0																																																												SSP – 2 → SSP; Vector Offset → (SSP); SSP – 4 → SSP; PC → (SSP); SSP – 2 → SSP; SR → (SSP); Illegal Instruction Vector Address → PC				
+97	JMP	JMP <ea>	0100.111.011.eee.aaa							1	x			x			x	x	x	x	x	x	x	x	x	x	x	x																																										Destination Address → PC				
+98	JSR	JSR <ea>	0100.111.010.eee.aaa							1	x			x			x	x	x	x	x	x	x	x	x	x	x	x																																										SP – 4 → Sp; PC → (SP); Destination Address → PC				
+99	LEA	LEA <ea>,An	0100.nnn.111.eee.aaa						x	2	x			x			x	x	x	x	x	x	x	x	x	x	x	x					x																																					<ea> → An				
+100	LINK	LINK An,#<disp16>	0100.111.001.010.nnn					x		2	x			x																																				16																				SP – 4 → SP; An → (SP); SP → An; SP + dn → SP				
+101	LINK	LINK An,#<disp32>	0100.100.000.001.nnn						x	2	x			x																																				32																				SP – 4 → SP; An → (SP); SP → An; SP + dn → SP				
+102	LSL	LSL Dx,Dy	1110.xxx.1ss.101.yyy				x	x	x	2		x																			x	x																																						Destination Shifted By Count → Destination				
+103	LSL	LSL #<data3.8>,Dy	1110.xxx.1ss.001.yyy				x	x	x	2																			x		x	x																																						Destination Shifted By Count → Destination				
+104	LSL	LSL <ea>	1110.001.111.eee.aaa					x		1	x			x	x	x	x	x	x	x	x						x	x																																										Destination Word Shifted By 1 → Destination				
+105	LSR	LSR Dx,Dy	1110.xxx.0ss.101.yyy				x	x	x	2		x																			x	x																																						Destination Shifted By Count → Destination				
+106	LSR	LSR #<data3.8>,Dy	1110.xxx.0ss.001.yyy				x	x	x	2																			x		x	x																																						Destination Shifted By Count → Destination				
+107	LSR	LSR <ea>	1110.001.011.eee.aaa					x		1	x			x	x	x	x	x	x	x	x						x	x																																										Destination Word Shifted By 1 → Destination				
