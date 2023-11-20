@@ -112,3 +112,12 @@ Row ID	Mnemonic	Synopsys	Opcode	Supplemental Word #1	Supplemental Word #2	Domain
 111	MOVE	MOVE CCR,<ea>	0100.001.011.eee.aaa					x		2	CCR																				x	x		x	x	x	x	x	x	x	x						x	x																						CCR → Destination					
 112	MOVE	MOVE <ea>,CCR	0100.010.011.eea.aaa					x		2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x		CCR																																							Source → CCR					
 113	MOVE	MOVE SR,<ea>	0100.000.011.eee.aaa					x		2	SR																				x	x		x	x	x	x	x									x	x																						SR → Destination					x
+114	MOVEM	MOVEM <list>,<ea>	0100.100.010.eee.aaa	Register list mask				x		2	(Register list mask)																				x			x		x	x	x	x	x	x						x	x																						Registers → Destination					
+115	MOVEM	MOVEM <list>,<ea>	0100.100.011.eee.aaa	Register list mask					x	2	(Register list mask)																				x			x		x	x	x	x	x	x						x	x																						Registers → Destination					
+116	MOVEM	MOVEM <ea>,<list>	0100.110.010.eee.aaa	Register list mask				x		2	x			x	x		x	x	x	x	x	x	x	x	x	x	x	x			(Register list mask)																																							Source → Registers					
+117	MOVEM	MOVEM <ea>,<list>	0100.110.011.eee.aaa	Register list mask					x	2	x			x	x		x	x	x	x	x	x	x	x	x	x	x	x			(Register list mask)																																							Source → Registers					
+118	MOVEP	MOVEP Dx,(d16,Ay)	0000.xxx.110.001.yyy	<data16>				x		2		x																			x		x																																					Source → Destination					
+119	MOVEP	MOVEP Dx,(d16,Ay)	0000.xxx.111.001.yyy	<data16>					x	2		x																			x		x																																					Source → Destination					
+120	MOVEP	MOVEP (d16,Ay),Dx	0000.xxx.100.001.yyy	<data16>				x		2	x		x																			x																																						Source → Destination					
+121	MOVEP	MOVEP (d16,Ay),Dx	0000.xxx.101.001.yyy	<data16>					x	2	x		x																			x																																						Source → Destination					
+122	MOVEQ	MOVEQ #<data8>,Dn	0111.nnn.0.dddddddd							2																				8		x																																						Immediate Data → Destination					
