@@ -126,3 +126,6 @@ Row ID	Mnemonic	Synopsys	Opcode	Supplemental Word #1	Supplemental Word #2	Domain
 125	MOVEP	MOVEP (d16,Ay),Dx	0000.xxx.100.001.yyy	<data16>				x		2	x		x																			x																																						Source → Destination						
 126	MOVEP	MOVEP (d16,Ay),Dx	0000.xxx.101.001.yyy	<data16>					x	2	x		x																			x																																						Source → Destination						
 127	MOVEQ	MOVEQ #<data8>,Dn	0111.nnn.0.dddddddd							2																				8		x																																						Immediate Data → Destination						
+128	MULS	MULS <ea>,Dn	1100.nnn.111.eee.aaa					x		2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x			x																																						[Signed] Source(16) × Destination(16) → Destination(32)						
+129	MULS	MULS <ea>,Dl	0100.110.000.eee.aaa	0.lll.100.000.000.000					x	2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x			x																																						[Signed] Source(32) × Destination(32) → Destination(32)	x					
+130	MULS	MULS <ea>,Dh-Dl	0100.110.000.eee.aaa	0.lll.110.000.000.hhh					x	2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x			x-x																																						[Signed] Source(32) × Destination low(32) → Destination(64) = Destination high(32)—Destination low(32)	x					
