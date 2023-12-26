@@ -145,8 +145,14 @@ Row ID	Mnemonic	Synopsys	Opcode	Supplemental Word #1	Supplemental Word #2	Domain
 144	PACK	PACK Dx,Dy,#<data16>	1000.yyy.101.000.xxx	<data16>						3	x	x																				x																																					x	Source (Unpacked BCD) + Adjustment → Destination (Packed BCD)	x					
 145	PEA	PEA <ea>	0100.100.001.eee.aaa							1	x			x			x	x	x	x	x	x	x	x	x	x	x	x																																										SP – 4 → SP; <ea> → (SP)						
 146	ROL	ROL Dx,Dy	1110.xxx.1ss.111.yyy				x	x	x	2		x																			x	x																																						Destination Rotated Left By <count> → Destination						
-147	ROL	ROL #<data3.8>,Dy	1110.ddd.1ss.111.yyy				x	x	x	2																			x		x	x																																						Destination Rotated Left By <count> → Destination						
+147	ROL	ROL #<data3.8>,Dy	1110.ddd.1ss.011.yyy				x	x	x	2																			x		x	x																																						Destination Rotated Left By <count> → Destination						
 148	ROL	ROL <ea>	1110.001.111.eee.aaa					x		1	x			x	x	x	x	x	x	x	x						x	x																																										Destination Rotated Left By 1 → Destination						
 149	ROR	ROR Dx,Dy	1110.xxx.0ss.111.yyy				x	x	x	2		x																			x	x																																						Destination Rotated Right By <count> → Destination						
-150	ROR	ROR #<data3.8>,Dy	1110.ddd.0ss.111.yyy				x	x	x	2																			x		x	x																																						Destination Rotated Right By <count> → Destination						
+150	ROR	ROR #<data3.8>,Dy	1110.ddd.0ss.011.yyy				x	x	x	2																			x		x	x																																						Destination Rotated Right By <count> → Destination						
 151	ROR	ROR <ea>	1110.001.011.eee.aaa					x		1	x																																																											Destination Rotated Right By 1 → Destination						
+152	ROXL	ROXL Dx,Dy	1110.xxx.1ss.110.yyy				x	x	x	2		x																			x	x																																						Destination Rotated Left With X By Count → Destination						
+153	ROXL	ROXL #<data3.8>,Dy	1110.ddd.1ss.010.yyy				x	x	x	2																			x		x	x																																						Destination Rotated Left With X By Count → Destination						
+154	ROXL	ROXL <ea>	1110.010.111.eee.aaa					x		1				x	x	x	x	x	x	x	x						x	x																																										Destination Rotated Left With X By 1 → Destination						
+155	ROXR	ROXL Dx,Dy	1110.xxx.0ss.110.yyy				x	x	x	2		x																			x	x																																						Destination Rotated Right With X By Count → Destination						
+156	ROXR	ROXR #<data3.8>,Dy	1110.ddd.0ss.010.yyy				x	x	x	2																			x		x	x																																						Destination Rotated Right With X By Count → Destination						
+157	ROXR	ROXR <ea>	1110.010.011.eee.aaa					x		1	x			x	x	x	x	x	x	x	x						x	x																																										Destination Rotated Right With X By 1 → Destination						
