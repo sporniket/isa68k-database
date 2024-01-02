@@ -156,3 +156,11 @@ Row ID	Mnemonic	Synopsys	Opcode	Supplemental Word #1	Supplemental Word #2	Domain
 155	ROXR	ROXL Dx,Dy	1110.xxx.0ss.110.yyy				x	x	x	2		x																			x	x																																						Destination Rotated Right With X By Count → Destination						
 156	ROXR	ROXR #<data3.8>,Dy	1110.ddd.0ss.010.yyy				x	x	x	2																			x		x	x																																						Destination Rotated Right With X By Count → Destination						
 157	ROXR	ROXR <ea>	1110.010.011.eee.aaa					x		1	x			x	x	x	x	x	x	x	x						x	x																																										Destination Rotated Right With X By 1 → Destination						
+158	RTD	RTD #<disp16>	0100.111.001.110.100							1																				16																																								(SP) → PC; SP + 4 + dn → SP			x			
+159	RTM	RTM Dn	0000.011.011.000.nnn							1	x	x																																																										Reload Saved Module State from Stack		x				
+160	RTM	RTM An	0000.011.011.001.nnn							1			x																																																									Reload Saved Module State from Stack		x				
+161	RTR	RTR	0100.111.001.110.111																																																																			(SP) → CCR; SP + 2 → SP; (SP) → PC; SP + 4 → SP						
+162	RTS	RTS	0100.111.001.110.101																																																																			(SP) → PC; SP + 4 → SP						
+163	SBCD	SBCD Dx,Dy	1000.yyy.100.000.xxx				x			2	x	x																				x																																						Destination10 – Source10 – X → Destination						
+164	SBCD	SBCD -(Ax),-(Ay)	1000.yyy.100.001.xxx				x			2	x					x																				x																																		Destination10 – Source10 – X → Destination						
+165	Scc	Scc <ea>	0101.cccc.11.eee.aaa				x			1	x	x		x	x	x	x	x	x	x	x						x	x																																										If Condition True ; Then 1s → Destination ; Else 0s → Destination						
