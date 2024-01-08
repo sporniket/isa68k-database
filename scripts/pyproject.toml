@@ -1,0 +1,15 @@
+[project]
+name = "isa68k-db-lib-by-sporniket"
+version = "0.0.1"
+description = "A library to manipulate TSV files from the isa68k-database project"
+authors = [
+    {name = "David SPORN", email = "sporniket.studio@gmail.com"},
+]
+dependencies = []
+requires-python = ">=3.10"
+readme = "README.md"
+license = {text = "LGPL-3.0+"}
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
