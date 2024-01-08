@@ -164,3 +164,11 @@ Row ID	Mnemonic	Synopsys	Opcode	Supplemental Word #1	Supplemental Word #2	Domain
 163	SBCD	SBCD Dx,Dy	1000.yyy.100.000.xxx				x			2	x	x																				x																																						Destination10 – Source10 – X → Destination						
 164	SBCD	SBCD -(Ax),-(Ay)	1000.yyy.100.001.xxx				x			2	x					x																				x																																		Destination10 – Source10 – X → Destination						
 165	Scc	Scc <ea>	0101.cccc.11.eee.aaa				x			1	x	x		x	x	x	x	x	x	x	x						x	x																																										If Condition True ; Then 1s → Destination ; Else 0s → Destination						
+166	SUB	SUB <ea>,Dn	1001.nnn.1ss.eee.aaa				x	x	x	2	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x			x																																						Destination – Source → Destination						
+167	SUB	SUB Dn,<ea>	1001.nnn.0ss.eee.aaa				x	x	x	2		x																			x			x	x	x	x	x	x	x	x						x	x																						Destination – Source → Destination						
+168	SUBA	SUBA <ea>,An	1001.nnn.011.eee.aaa					x		2	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x				x																																					Destination – Source → Destination						
+169	SUBA	SUBA <ea>,An	1001.nnn.111.eee.aaa						x	2	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x				x																																					Destination – Source → Destination						
+170	SUBI	SUBI #<data>,<ea>	0000.010.0ss.eee.aaa				x	x	x	2																			x		x	x		x	x	x	x	x	x	x	x						x	x																						Destination – Immediate Data → Destination						
+171	SUBQ	SUBQ #<data3.8>,<ea>	0101.ddd.1ss.eee.aaa				x	x	x	2																			3.8		x	x	x	x	x	x	x	x	x	x	x						x	x																						Destination – Immediate Data → Destination						
+172	SUBX	SUBX Dx,Dy	1011.yyy.1ss.000.xxx				x	x	x	2	x	x																				x																																						Destination – Source – X → Destination						
+173	SUBX	SUBX -(Ax),-(Ay)	1011.yyy.1ss.001.xxx				x	x	x	2	x					x																				x																																		Destination – Source – X → Destination						
