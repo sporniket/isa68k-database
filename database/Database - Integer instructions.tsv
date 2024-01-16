@@ -172,3 +172,14 @@ Row ID	Mnemonic	Synopsys	Opcode	Supplemental Word #1	Supplemental Word #2	Domain
 171	SUBQ	SUBQ #<data3.8>,<ea>	0101.ddd.1ss.eee.aaa				x	x	x	2																			3.8		x	x	x	x	x	x	x	x	x	x	x						x	x																						Destination – Immediate Data → Destination						
 172	SUBX	SUBX Dx,Dy	1011.yyy.1ss.000.xxx				x	x	x	2	x	x																				x																																						Destination – Source – X → Destination						
 173	SUBX	SUBX -(Ax),-(Ay)	1011.yyy.1ss.001.xxx				x	x	x	2	x					x																				x																																		Destination – Source – X → Destination						
+174	SWAP	SWAP Dn	0100.100.001.000.nnn							1	x	x																																																										Register 31 – 16 ←→ Register 15 – 0						
+175	TAS	TAS <ea>	0100.101.011.eee.aaa							1	x	x		x	x	x	x	x	x	x	x						x	x																																										Destination Tested → Condition Codes; 1 → Bit 7 of Destination						
+176	TRAP	TRAP #<data4>	0100.1110.0100.dddd							1	x																		4																																									1 → S-Bit of SR;; {*SSP – 2 → SSP; Format/Offset → (SSP);;} SSP – 4 → SSP; PC → (SSP); SSP – 2 → SSP; SR → (SSP);; Vector Address → PC // *The MC68000 and MC68008 do not write vector offset or format code to the system stack.)						
+177	TRAPcc	TRAPcc	0101.cccc.11.111.100																																																																			If cc Then TRAP #7						
+178	TRAPcc	TRAPcc #<data16>	0101.cccc.11.111.010					x		1																			16																																									If cc Then TRAP #7						
+179	TRAPcc	TRAPcc #<data32>	0101.cccc.11.111.011						x	1																			32																																									If cc Then TRAP #7						
+180	TRAPV	TRAPV	0100.111.001.110.110																																																																			If V Then TRAP #7						
+181	TST	TST <ea>	0100.101.0ss.eee.aaa				x	x	x	1	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x																																									Destination Tested → Condition Codes						
+182	UNLK	UNLK An	0100.111.001.011.nnn							1	x		x																																																									An → SP; (SP) → An; SP + 4 → SP						
+183	UNPK	UNPK -(Ax),-(Ay),#<data16>	1000.yyy.110.001.xxx	<data16>						2	x					x																				x																																		Source (Packed BCD) + Adjustment → Destination (Unpacked BCD)						
+184	UNPK	UNPK Dx,Dy,#<data16>	1000.yyy.110.000.xxx	<data16>						2	x	x																				x																																						Source (Packed BCD) + Adjustment → Destination (Unpacked BCD)						
