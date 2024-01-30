@@ -13,5 +13,11 @@ Row ID	Mnemonic	Synopsys	Opcode	Supplemental Word #1	Supplemental Word #2	Domain
 12	MOVE	MOVE <ea>,SR	0100.011.011.eee.aaa					x		2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x		SR																																							If Supervisor State Then Source → SR Else TRAP						
 13	MOVE	MOVE USP,An	0100.111.001.101.nnn						x	2	USP																				x		x																																					If Supervisor State Then USP → An Else TRAP						
 14	MOVE	MOVE An,USP	0100.111.001.100.nnn						x	2	x		x																		USP																																							If Supervisor State Then An → USP Else TRAP						
-15	MOVEC	MOVEC Rc,Rn	0100.111.001.111.010	R.nnn.ccc.ccc.ccc					x	2	control register																					x	x																																					If Supervisor State Then Rc → Rn Else TRAP			x			
-16	MOVEC	MOVEC Rn,Rc	0100.111.001.111.011	R.nnn.ccc.ccc.ccc					x	2		x	x																		control register																																							If Supervisor State Then Rn → Rc Else TRAP			x			
+15	MOVEC	MOVEC Rc,Rn	0100.111.001.111.010	R.nnn.cccc.cccc.cccc					x	2	control register																					x	x																																					If Supervisor State Then Rc → Rn Else TRAP			x			
+16	MOVEC	MOVEC Rn,Rc	0100.111.001.111.011	R.nnn.cccc.cccc.cccc					x	2		x	x																		control register																																							If Supervisor State Then Rn → Rc Else TRAP			x			
+17	MOVES	MOVES Rn,<ea>	0000.111.0ss.eee.aaa	R.nnn.100.000.000.000			x	x	x	2		x	x																		x			x	x	x	x	x	x	x	x						x	x																						If Supervisor State ; Then Rn → Destination [DFC] ; Else TRAP			x			
+18	MOVES	MOVES <ea>,Rn	0000.111.0ss.eee.aaa	R.nnn.000.000.000.001			x	x	x	2	x			x	x	x	x	x	x	x	x						x	x				x	x																																					If Supervisor State ; Then Rn → Destination [DFC] or Source [SFC] → Rn ; Else TRAP			x			
+19	ORI	ORI #<data16>,SR	0000.000.001.111.100					x		2																			16		SR																																							If Supervisor State ; Then Source V SR → SR ; Else TRAP						
+20	RESET	RESET	0100.111.001.110.000							0																																																												If Supervisor State ; Then Assert RESET (RSTO, MC68040 Only) Line ; Else TRAP						
+21	RTE	RTE	0100.111.001.110.011							0																																																												If Supervisor State Then { (SP) → SR; SP + 2 → SP; (SP) → PC; SP + 4 → SP; Restore State and Deallocate Stack According to (SP) } Else TRAP						
+22	STOP	STOP #<data16>	0100.111.001.110.010							1																			16																																									If Supervisor State Then { Immediate Data → SR; STOP } Else TRAP						
