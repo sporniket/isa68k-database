@@ -1,25 +1,25 @@
-Id	Codename	User friendly name
-# MC68010/MC68020/MC68030/MC68040/CPU32		
-0x000	SFC	Source Function Code
-0x001	DFC	Destination Function Code
-0x800	USP	User Stack Pointer
-0x801	VBR	Vector Base Register
-# MC68020/MC68030/MC68040		
-0x002	CACR	Cache Control Register
-0x802	CAAR2	Cache Address Register
-0x803	MSP	Master Stack Pointer
-0x804	ISP	Interrupt Stack Pointer
-# MC68040/MC68LC040		
-0x003	TC	MMU Translation Control Register
-0x004	ITT0	Instruction Transparent Translation Register 0
-0x005	ITT1	Instruction Transparent Translation Register 1
-0x006	DTT0	Data Transparent Translation Register 0
-0x007	DTT1	Data Transparent Translation Register 1
-0x805	MMUSR	MMU Status Register
-0x806	URP	User Root Pointer
-0x807	SRP	Supervisor Root Pointer
-# MC68EC040 only		
-0x004	IACR0	Instruction Access Control Register 0
-0x005	IACR1	Instruction Access Control Register 1
-0x006	DACR1	Data Access Control Register 0
-0x007	DACR1	Data Access Control Register 1
+Id	Codename	User friendly name	010	020	030	040	040LC	040EC	CPU32
+# MC68010/MC68020/MC68030/MC68040/CPU32									
+0x000	SFC	Source Function Code	x	x	x	x	x	x	x
+0x001	DFC	Destination Function Code	x	x	x	x	x	x	x
+0x800	USP	User Stack Pointer	x	x	x	x	x	x	x
+0x801	VBR	Vector Base Register	x	x	x	x	x	x	x
+# MC68020/MC68030/MC68040									
+0x002	CACR	Cache Control Register		x	x	x	x	x	
+0x802	CAAR2	Cache Address Register		x	x	x	x	x	
+0x803	MSP	Master Stack Pointer		x	x	x	x	x	
+0x804	ISP	Interrupt Stack Pointer		x	x	x	x	x	
+# MC68040/MC68LC040									
+0x003	TC	MMU Translation Control Register				x	x		
+0x004	ITT0	Instruction Transparent Translation Register 0				x	x		
+0x005	ITT1	Instruction Transparent Translation Register 1				x	x		
+0x006	DTT0	Data Transparent Translation Register 0				x	x		
+0x007	DTT1	Data Transparent Translation Register 1				x	x		
+0x805	MMUSR	MMU Status Register				x	x		
+0x806	URP	User Root Pointer				x	x		
+0x807	SRP	Supervisor Root Pointer				x	x		
+# MC68EC040 only									
+0x004	IACR0	Instruction Access Control Register 0						x	
+0x005	IACR1	Instruction Access Control Register 1						x	
+0x006	DACR1	Data Access Control Register 0						x	
+0x007	DACR1	Data Access Control Register 1						x	
