@@ -1,0 +1,19 @@
+EA syntax	Mode	Register	Label	Comment	Number of extension words min	Number of extension words max	68000	68010	68020	68030	68040	XCPU32
+Dn	000	n	Data Register Direct Mode		0		x	x	x	x	x	x
+An	001	n	Address Register Direct Mode		0		x	x	x	x	x	x
+(An)	010	n	Address Register Indirect Mode		0		x	x	x	x	x	x
+(An)+	011	n	Address Register Indirect with Postincrement Mode	Incremented by SIZE	0		x	x	x	x	x	x
+-(An)	100	n	Address Register Indirect with Predecrement Mode	Decremented by SIZE	0		x	x	x	x	x	x
+(d16,An)	101	n	Address Register Indirect with Displacement Mode	d16 sign extended to 32 bits	1		x	x	x	x	x	x
+(d8,An,Xm.SIZE*SCALE)	110	n	Address Register Indirect with Index (8-Bit Displacement) Mode	d8 and Xm.SIZE sign extended to 32 bits	1		x	x	x	x	x	x
+(bd,An,Xm.SIZE*SCALE)	110	n	Address Register Indirect with Index (Base Displacement) Mode	the number of extension words depends on the size of base displacement	1	3			x	x	x	x
+([bd,An],Xm.SIZE*SCALE,od)	110	n	Memory Indirect Postindexed Mode	the number of extension words depends on the size of base and outer displacements	1	5			x	x	x	
+([bd,An,Xm.SIZE*SCALE],od)	110	n	Memory Indirect Preindexed Mode	the number of extension words depends on the size of base and outer displacements	1	5			x	x	x	
+(d16,pc)	111	010	Program Counter Indirect with Displacement Mode	d16 sign extended to 32 bits	1		x	x	x	x	x	x
+(d8,PC,Xm.SIZE*SCALE)	111	011	Program Counter Indirect with Index (8-Bit Displacement) Mode	d8 and Xm.SIZE sign extended to 32 bits	1		x	x	x	x	x	x
+(bd,PC,Xm.SIZE*SCALE)	111	011	Program Counter Indirect with Index (Base Displacement) Mode	the number of extension words depends on the size of base displacement	1	3			x	x	x	x
+([bd,PC],Xm.SIZE*SCALE,od)	111	011	Program Counter Memory Indirect Postindexed Mode	the number of extension words depends on the size of base and outer displacements	1	5			x	x	x	
+([bd,PC,Xm.SIZE*SCALE],od)	111	011	Program Counter Memory Indirect Preindexed Mode	the number of extension words depends on the size of base and outer displacements	1	5			x	x	x	
+(xxx).w	111	000	Absolute Short Addressing Mode	the value is sign extended to get the 32 bits address	1		x	x	x	x	x	x
+(xxx).l	111	001	Absolute Long Addressing Mode		2		x	x	x	x	x	x
+#<xxx>	111	100	Immediate Data	the number of extension words depends of the native type, except for packed binary decimal operand (?)	1	6	x	x	x	x	x	x

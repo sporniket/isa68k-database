@@ -1,0 +1,17 @@
+Binary Code	Code	Alias	Condition	Comment on comparison	Typical use	True when	signed comparaison	Bcc
+0100	CC	HS	Carry Clear	Right hand side operand is Higher or Same than left hand side operand	CMP L,R	L <= R		x
+0101	CS	LO	Carry Set	Right hand side operand is LOwer than left hand operand	CMP L,R	L > R		x
+0111	EQ		Equal	Right hand side operand is EQual to left hand side operand	CMP L,R	L == R		x
+1100	GE		Greater or Equal	Right hand side operand is Greater or Equal to left hand side operand	CMP L,R	L <= R	x	x
+1110	GT		Greater Than	Right hand side operand is Greater Than to left hand side operand	CMP L,R	L < R	x	x
+0010	HI		Higher	Right hand side operand is HIgher than left hand side operand	CMP L,R	L < R		x
+1111	LE		Less or Equal	Right hand side operand is Lesser or Equal to left hand side operand	CMP L,R	L > R	x	x
+0011	LS		Lower or Same	Right hand side operand is Lower or Equal to left hand side operand	CMP L,R	L >= R		x
+1101	LT		Less Than	Right hand side operand is Lesser than left hand operand	CMP L,R	L >= R	x	x
+1011	MI		MInus	(When LHS operand is 0) is negative	CMP L,R	0 > R		x
+0110	NE		Not Equal 	Right hand side operand is Not Equal to left hand side operand	CMP L,R	L != R		x
+1010	PL		PLus	(When LHS operand is 0) is positive	CMP L,R	0 <= R		x
+1000	VC		oVerflow Clear	No overflow	SUB L,R	No overflow		x
+1001	VS		oVerflow Set	There is overflow	SUB L,R	overflow		x
+0000	T		True	illegal with Bcc	—	Always True		
+0001	F		False	illegal with Bcc	—	Never True		
