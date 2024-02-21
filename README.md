@@ -49,7 +49,7 @@ To get the latest available work, one must clone the git repository.
 
 	git clone --recurse-submodules https://github.com/sporniket/isa68k-database.git
 
-Then, open the project with Kicad 6.
+Then, do whatever you want with the TSV files.
 
 ## 4. Known issues
 See the [project issues](https://github.com/sporniket/isa68k-database/issues) page.
