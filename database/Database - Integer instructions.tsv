@@ -69,117 +69,110 @@ Row ID	Mnemonic	Synopsys	Opcode	Supplemental Word #1	Supplemental Word #2	Domain
 68	CMPI	CMPI #<data>,<ea>	0000.110.0ss.eee.aaa				x	x	x	2																			x		x											x	x																											Destination – Immediate data → cc			x			
 69	CMPM	CMPM (Ay)+,(Ax)+	1011.xxx.1ss.001.yyy				x	x	x	2	x				x																				x																																			Destination – Source → cc						
 70	CMP2	CMP2 <ea>,Rn	0000.0ss.011.eee.aaa	R.nnn.000.000.000.000			x	x	x	2	x			x			x	x	x	x	x	x	x	x	x	x	x	x			x	r	r																																					Compare Rn<LB or Rn>UB and Set Condition Codes	x					
-71	cpBcc	cpBcc #<disp>	1111.ppp.01s.ccc.ccc	opt. coproc. ext. words	1,2,more ?			x	x	1																				16:32																																								If cpcc True Then Scan PC + dn → PC	x			x		
-72	cpDBcc	cpDBcc Dn,#<data>	1111.ppp.001.001.nnn	0000.000.000.ccc.ccc	opt.coproc. ext. words			x		2	x	x																																						16																				If cpcc False Then (Dn – 1 → Dn; If Dn ≠ – 1 Then Scan PC + dn → PC)	x			x		
-73	cpGEN	cpGEN #<command>	1111.ppp.000.eee.aaa	coproc. command word	e.a. or coproc. ext. words					1	?	?	?	?	?	?	?	?	?	?	?	?	?	?	?	?	?	?	?																																									Pass Command Word to Coprocessor	x					
-74	cpScc	cpScc <ea>	1111.ppp.001.eee.aaa	0000.000.000.ccc.ccc	e.a. or coproc. ext. words					1	x	x		x	x	x	x	x	x	x	x						x	x																																										If cpcc True Then 1s → Destination Else 0s → Destination	x					
-75	cpTRAPcc	cpTRAPcc	1111.ppp.001.111.100	0000.000.000.ccc.ccc	opt.coproc. ext. words					0																																																												If cpcc True Then TRAP	x					
-76	cpTRAPcc	cpTRAPcc #<data16>	1111.ppp.001.111.010	0000.000.000.ccc.ccc	opt.coproc. ext. words					1																			16																																									If cpcc True Then TRAP	x					
-77	cpTRAPcc	cpTRAPcc #<data32>	1111.ppp.001.111.011	0000.000.000.ccc.ccc	opt.coproc. ext. words					1																			32																																									If cpcc True Then TRAP	x					
-78	DBcc	DBcc Dn,#<data16>	0101.cccc.11.001.nnn							2	x	x																																						16																				If Condition False Then (Dn – 1 → Dn; If Dn ≠ – 1 Then PC + dn → PC)						
-79	DIVS	DIVS <ea>,Dn	1000.nnn.111.eee.aaa					x		2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x		32		x																																						[Signed] Destination(32) ÷ Source(32) → Destination(32) = remainder(16).quotient(16))						
-80	DIVS	DIVS <ea>,Dq	0100.110.001.eee.aaa	0.qqq.100.000.000.qqq					x	2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x		32		x																																						[Signed] Destination(32 )÷ Source(32) → Destination(32) = quotient(32)	x					
-81	DIVS	DIVS <ea>,Dr:Dq	0100.110.001.eee.aaa	0.qqq.110.000.000.rrr					x	2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x		32		x:x																																						[Signed] Destination(64:Dr.Dq) ÷ Source(32) → Destination(64) = remainder(32:Dr).quotient(32:Dq)	x					
-82	DIVSL	DIVSL <ea>,Dr:Dq	0100.110.001.eee.aaa	0.qqq.100.000.000.rrr					x	2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x		32		x:x																																						[Signed] Destination(32:Dq) ÷ Source(32) → Destination(64) = remainder(32:Dr).quotient(32:Dq)	x					
-83	DIVU	DIVU <ea>,Dn	1000.nnn.011.eee.aaa					x		2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	32			x																																						[Unsigned] Destination(32) ÷ Source(32) → Destination(32) = remainder(16).quotient(16))						
-84	DIVU	DIVU <ea>,Dq	0100.110.001.eee.aaa	0.qqq.000.000.000.qqq					x	2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	32			x																																						[Unsigned] Destination(32 )÷ Source(32) → Destination(32) = quotient(32)	x					
-85	DIVU	DIVU <ea>,Dr:Dq	0100.110.001.eee.aaa	0.qqq.010.000.000.rrr					x	2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	32			x:x																																						[Unsigned] Destination(64:Dr.Dq) ÷ Source(32) → Destination(64) = remainder(32:Dr).quotient(32:Dq)	x					
-86	DIVUL	DIVUL <ea>,Dr:Dq	0100.110.001.eee.aaa	0.qqq.000.000.000.rrr					x	2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	32			x:x																																						[Unsigned] Destination(32:Dq) ÷ Source(32) → Destination(64) = remainder(32:Dr).quotient(32:Dq)	x					
-87	EOR	EOR Dn,<ea>	1011.nnn.1ss.eee.aaa				x	x	x	2		x																			x	x		x	x	x	x	x	x	x	x						x	x																						Source ⊕ Destination → Destination						
-88	EORI	EORI #<data>,<ea>	0000.101.0ss.eee.aaa				x	x	x	2																			x		x	x		x	x	x	x	x	x	x	x						x	x																						Immediate Data ⊕ Destination → Destination						
-89	EORI	EORI #<data8>,CCR	0000.101.000.111.100				x			2																			8		CCR																																							Source ⊕ CCR → CCR						
-90	EXG	EXG Dx,Dy	1100.xxx.101.000.yyy							2		x																			x	x																																						Dx ←→ Dy						
-91	EXG	EXG Ax,Ay	1100.xxx.101.001.yyy							2			x																		x		x																																					Ax ←→ Ay						
-92	EXG	EXG Dx,Ay	1100.xxx.110.001.yyy							2		x																			x		x																																					Dx ←→ Ay						
-93	EXT	EXT Dn	0100.100.010.000.nnn					x		1	x	x																																																										Destination Sign-Extended → Destination						
-94	EXT	EXT Dn	0100.100.011.000.nnn						x	1	x	x																																																										Destination Sign-Extended → Destination						
-95	EXTB	EXTB Dn	0100.100.111.000.nnn						x	1	x	x																																																										Destination Sign-Extended → Destination						
-96	ILLEGAL	ILLEGAL	0100.101.011.111.100							0																																																												SSP – 2 → SSP; Vector Offset → (SSP); SSP – 4 → SSP; PC → (SSP); SSP – 2 → SSP; SR → (SSP); Illegal Instruction Vector Address → PC						
-97	JMP	JMP <ea>	0100.111.011.eee.aaa							1	x			x			x	x	x	x	x	x	x	x	x	x	x	x																																										Destination Address → PC						
-98	JSR	JSR <ea>	0100.111.010.eee.aaa							1	x			x			x	x	x	x	x	x	x	x	x	x	x	x																																										SP – 4 → Sp; PC → (SP); Destination Address → PC						
-99	LEA	LEA <ea>,An	0100.nnn.111.eee.aaa						x	2	x			x			x	x	x	x	x	x	x	x	x	x	x	x					x																																					<ea> → An						
-100	LINK	LINK An,#<disp16>	0100.111.001.010.nnn					x		2	x			x																																				16																				SP – 4 → SP; An → (SP); SP → An; SP + dn → SP						
-101	LINK	LINK An,#<disp32>	0100.100.000.001.nnn						x	2	x			x																																				32																				SP – 4 → SP; An → (SP); SP → An; SP + dn → SP						
-102	LSL	LSL Dx,Dy	1110.xxx.1ss.101.yyy				x	x	x	2		x																			x	x																																						Destination Shifted By Count → Destination						
-103	LSL	LSL #<data3.8>,Dy	1110.xxx.1ss.001.yyy				x	x	x	2																			x		x	x																																						Destination Shifted By Count → Destination						
-104	LSL	LSL <ea>	1110.001.111.eee.aaa					x		1	x			x	x	x	x	x	x	x	x						x	x																																										Destination Word Shifted By 1 → Destination						
-105	LSR	LSR Dx,Dy	1110.xxx.0ss.101.yyy				x	x	x	2		x																			x	x																																						Destination Shifted By Count → Destination						
-106	LSR	LSR #<data3.8>,Dy	1110.xxx.0ss.001.yyy				x	x	x	2																			x		x	x																																						Destination Shifted By Count → Destination						
-107	LSR	LSR <ea>	1110.001.011.eee.aaa					x		1	x			x	x	x	x	x	x	x	x						x	x																																										Destination Word Shifted By 1 → Destination						
-108	MOVE	MOVE <ea>,<fb>	00ss.bbb.fff.eee.aaa				x			2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x			x		x	x	x	x	x	x	x	x						x	x																						Source → Destination						
-109	MOVE	MOVE <ea>,<fb>	00ss.bbb.fff.eee.aaa					x	x	2	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x			x		x	x	x	x	x	x	x	x						x	x																						Source → Destination						
-110	MOVEA	MOVEA <ea>,An	00ss.nnn.001.eee.aaa					x	x	2	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x				x																																					Source → Destination						
-111	MOVE	MOVE CCR,<ea>	0100.001.011.eee.aaa					x		2	CCR																				x	x		x	x	x	x	x	x	x	x						x	x																						CCR → Destination						
-112	MOVE	MOVE <ea>,CCR	0100.010.011.eea.aaa					x		2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x		CCR																																							Source → CCR						
-113	MOVE	MOVE SR,<ea>	0100.000.011.eee.aaa					x		2	SR																				x	x		x	x	x	x	x									x	x																						SR → Destination					x	
-114	MOVE16	MOVE16 (Ax)+,(Ay)+	1111.011.000.100.xxx	1.yyy.000.000.000.000						2	x				x																				x																																			Source Block → Destination Block						x
-115	MOVE16	MOVE16 (Ay)+,(xxx).L	1111.011.000.000.nnn							2	x				x																																	x																						Source Block → Destination Block						x
-116	MOVE16	MOVE16 (xxx).L,(Ay)+	1111.011.000.001.nnn							2																		x			x				x																																			Source Block → Destination Block						x
-117	MOVE16	MOVE16 (Ay),(xxx).L	1111.011.000.010.nnn							2	x			x																																		x																						Source Block → Destination Block						x
-118	MOVE16	MOVE16 (xxx).L,(Ay)	1111.011.000.011.nnn							2																		x			x			x																																				Source Block → Destination Block						x
-119	MOVEM	MOVEM <list>,<ea>	0100.100.010.eee.aaa	Register list mask				x		2	(Register list mask)																				x			x		x	x	x	x	x	x						x	x																						Registers → Destination						
-120	MOVEM	MOVEM <list>,<ea>	0100.100.011.eee.aaa	Register list mask					x	2	(Register list mask)																				x			x		x	x	x	x	x	x						x	x																						Registers → Destination						
-121	MOVEM	MOVEM <ea>,<list>	0100.110.010.eee.aaa	Register list mask				x		2	x			x	x		x	x	x	x	x	x	x	x	x	x	x	x			(Register list mask)																																							Source → Registers						
-122	MOVEM	MOVEM <ea>,<list>	0100.110.011.eee.aaa	Register list mask					x	2	x			x	x		x	x	x	x	x	x	x	x	x	x	x	x			(Register list mask)																																							Source → Registers						
-123	MOVEP	MOVEP Dx,(d16,Ay)	0000.xxx.110.001.yyy	<data16>				x		2		x																			x		x																																					Source → Destination						
-124	MOVEP	MOVEP Dx,(d16,Ay)	0000.xxx.111.001.yyy	<data16>					x	2		x																			x		x																																					Source → Destination						
-125	MOVEP	MOVEP (d16,Ay),Dx	0000.xxx.100.001.yyy	<data16>				x		2	x		x																			x																																						Source → Destination						
-126	MOVEP	MOVEP (d16,Ay),Dx	0000.xxx.101.001.yyy	<data16>					x	2	x		x																			x																																						Source → Destination						
-127	MOVEQ	MOVEQ #<data8>,Dn	0111.nnn.0.dddddddd							2																				8		x																																						Immediate Data → Destination						
-128	MULS	MULS <ea>,Dn	1100.nnn.111.eee.aaa					x		2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x			x																																						[Signed] Source(16) × Destination(16) → Destination(32)						
-129	MULS	MULS <ea>,Dl	0100.110.000.eee.aaa	0.lll.100.000.000.000					x	2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x			x																																						[Signed] Source(32) × Destination(32) → Destination(32)	x					
-130	MULS	MULS <ea>,Dh-Dl	0100.110.000.eee.aaa	0.lll.110.000.000.hhh					x	2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x			x-x																																						[Signed] Source(32) × Destination low(32) → Destination(64) = Destination high(32)—Destination low(32)	x					
-131	MULU	MULU <ea>,Dn	1100.nnn.011.eee.aaa					x		2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x			x																																						[Unsigned] Source(16) × Destination(16) → Destination(32)						
-132	MULU	MULU <ea>,Dl	0100.110.000.eee.aaa	0.lll.000.000.000.000					x	2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x			x																																						[Unsigned] Source(32) × Destination(32) → Destination(32)						
-133	MULU	MULU <ea>,Dh-Dl	0100.110.000.eee.aaa	0.lll.010.000.000.hhh					x	2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x			x-x																																						[Unsigned] Source(32) × Destination low(32) → Destination(64) = Destination high(32)—Destination low(32)	x					
-134	NBCD	NBCD <ea>	0100.100.000.eee.aaa				x			1	x	x		x	x	x	x	x	x	x	x						x	x																																										0 – Destination10 – X → Destination						
-135	NEG	NEG <ea>	0100.010.0ss.eee.aaa				x	x	x	1	x	x		x	x	x	x	x	x	x	x						x	x																																										0 – Destination → Destination						
-136	NEGX	NEGX <ea>	0100.000.0ss.eee.aaa				x	x	x	1	x	x		x	x	x	x	x	x	x	x						x	x																																										0 – Destination – X → Destination						
-137	NOP	NOP	0100.111.001.110.001							0																																																												No operation, does wait any pending bus cycles before proceeding.						
-138	NOT	NOT <ea>	0100.011.0ss.eee.aaa				x	x	x	1	x	x		x	x	x	x	x	x	x	x						x	x																																										~Destination → Destination						
-139	OR	OR <ea>,Dn	1000.nnn.0ss.eee.aaa				x	x	x	2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x			x																																						Source V Destination → Destination						
-140	OR	OR Dn,<ea>	1000.nnn.1ss.eee.aaa				x	x	x	2		x																			x			x	x	x	x	x	x	x	x						x	x																						Source V Destination → Destination						
-141	ORI	ORI #<data>,<ea>	0000.000.0ss.eee.aaa				x	x	x	2																			x		x	x		x	x	x	x	x	x	x	x						x	x																						Immediate Data V Destination → Destination						
-142	ORI	ORI #<data8>,CCR	0000.000.000.111.100							2																			x		CCR																																							Immediate Data V CCR → CCR						
-143	PACK	PACK -(Ax),-(Ay),#<data16>	1000.yyy.101.001.xxx	<data16>						3	x					x																					x																																x	Source (Unpacked BCD) + Adjustment → Destination (Packed BCD)	x					
-144	PACK	PACK Dx,Dy,#<data16>	1000.yyy.101.000.xxx	<data16>						3	x	x																				x																																					x	Source (Unpacked BCD) + Adjustment → Destination (Packed BCD)	x					
-145	PEA	PEA <ea>	0100.100.001.eee.aaa							1	x			x			x	x	x	x	x	x	x	x	x	x	x	x																																										SP – 4 → SP; <ea> → (SP)						
-146	ROL	ROL Dx,Dy	1110.xxx.1ss.111.yyy				x	x	x	2		x																			x	x																																						Destination Rotated Left By <count> → Destination						
-147	ROL	ROL #<data3.8>,Dy	1110.ddd.1ss.011.yyy				x	x	x	2																			x		x	x																																						Destination Rotated Left By <count> → Destination						
-148	ROL	ROL <ea>	1110.001.111.eee.aaa					x		1	x			x	x	x	x	x	x	x	x						x	x																																										Destination Rotated Left By 1 → Destination						
-149	ROR	ROR Dx,Dy	1110.xxx.0ss.111.yyy				x	x	x	2		x																			x	x																																						Destination Rotated Right By <count> → Destination						
-150	ROR	ROR #<data3.8>,Dy	1110.ddd.0ss.011.yyy				x	x	x	2																			x		x	x																																						Destination Rotated Right By <count> → Destination						
-151	ROR	ROR <ea>	1110.001.011.eee.aaa					x		1	x																																																											Destination Rotated Right By 1 → Destination						
-152	ROXL	ROXL Dx,Dy	1110.xxx.1ss.110.yyy				x	x	x	2		x																			x	x																																						Destination Rotated Left With X By Count → Destination						
-153	ROXL	ROXL #<data3.8>,Dy	1110.ddd.1ss.010.yyy				x	x	x	2																			x		x	x																																						Destination Rotated Left With X By Count → Destination						
-154	ROXL	ROXL <ea>	1110.010.111.eee.aaa					x		1				x	x	x	x	x	x	x	x						x	x																																										Destination Rotated Left With X By 1 → Destination						
-155	ROXR	ROXL Dx,Dy	1110.xxx.0ss.110.yyy				x	x	x	2		x																			x	x																																						Destination Rotated Right With X By Count → Destination						
-156	ROXR	ROXR #<data3.8>,Dy	1110.ddd.0ss.010.yyy				x	x	x	2																			x		x	x																																						Destination Rotated Right With X By Count → Destination						
-157	ROXR	ROXR <ea>	1110.010.011.eee.aaa					x		1	x			x	x	x	x	x	x	x	x						x	x																																										Destination Rotated Right With X By 1 → Destination						
-158	RTD	RTD #<disp16>	0100.111.001.110.100							1																				16																																								(SP) → PC; SP + 4 + dn → SP			x			
-159	RTM	RTM Dn	0000.011.011.000.nnn							1	x	x																																																										Reload Saved Module State from Stack		x				
-160	RTM	RTM An	0000.011.011.001.nnn							1			x																																																									Reload Saved Module State from Stack		x				
-161	RTR	RTR	0100.111.001.110.111																																																																			(SP) → CCR; SP + 2 → SP; (SP) → PC; SP + 4 → SP						
-162	RTS	RTS	0100.111.001.110.101																																																																			(SP) → PC; SP + 4 → SP						
-163	SBCD	SBCD Dx,Dy	1000.yyy.100.000.xxx				x			2	x	x																				x																																						Destination10 – Source10 – X → Destination						
-164	SBCD	SBCD -(Ax),-(Ay)	1000.yyy.100.001.xxx				x			2	x					x																				x																																		Destination10 – Source10 – X → Destination						
-165	Scc	Scc <ea>	0101.cccc.11.eee.aaa				x			1	x	x		x	x	x	x	x	x	x	x						x	x																																										If Condition True ; Then 1s → Destination ; Else 0s → Destination						
-166	SUB	SUB <ea>,Dn	1001.nnn.1ss.eee.aaa				x	x	x	2	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x			x																																						Destination – Source → Destination						
-167	SUB	SUB Dn,<ea>	1001.nnn.0ss.eee.aaa				x	x	x	2		x																			x			x	x	x	x	x	x	x	x						x	x																						Destination – Source → Destination						
-168	SUBA	SUBA <ea>,An	1001.nnn.011.eee.aaa					x		2	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x				x																																					Destination – Source → Destination						
-169	SUBA	SUBA <ea>,An	1001.nnn.111.eee.aaa						x	2	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x				x																																					Destination – Source → Destination						
-170	SUBI	SUBI #<data>,<ea>	0000.010.0ss.eee.aaa				x	x	x	2																			x		x	x		x	x	x	x	x	x	x	x						x	x																						Destination – Immediate Data → Destination						
-171	SUBQ	SUBQ #<data3.8>,<ea>	0101.ddd.1ss.eee.aaa				x	x	x	2																			3.8		x	x	x	x	x	x	x	x	x	x	x						x	x																						Destination – Immediate Data → Destination						
-172	SUBX	SUBX Dx,Dy	1011.yyy.1ss.000.xxx				x	x	x	2	x	x																				x																																						Destination – Source – X → Destination						
-173	SUBX	SUBX -(Ax),-(Ay)	1011.yyy.1ss.001.xxx				x	x	x	2	x					x																				x																																		Destination – Source – X → Destination						
-174	SWAP	SWAP Dn	0100.100.001.000.nnn							1	x	x																																																										Register 31 – 16 ←→ Register 15 – 0						
-175	TAS	TAS <ea>	0100.101.011.eee.aaa							1	x	x		x	x	x	x	x	x	x	x						x	x																																										Destination Tested → Condition Codes; 1 → Bit 7 of Destination						
-176	TRAP	TRAP #<data4>	0100.1110.0100.dddd							1	x																		4																																									1 → S-Bit of SR;; {*SSP – 2 → SSP; Format/Offset → (SSP);;} SSP – 4 → SSP; PC → (SSP); SSP – 2 → SSP; SR → (SSP);; Vector Address → PC // *The MC68000 and MC68008 do not write vector offset or format code to the system stack.)						
-177	TRAPcc	TRAPcc	0101.cccc.11.111.100																																																																			If cc Then TRAP #7						
-178	TRAPcc	TRAPcc #<data16>	0101.cccc.11.111.010					x		1																			16																																									If cc Then TRAP #7						
-179	TRAPcc	TRAPcc #<data32>	0101.cccc.11.111.011						x	1																			32																																									If cc Then TRAP #7						
-180	TRAPV	TRAPV	0100.111.001.110.110																																																																			If V Then TRAP #7						
-181	TST	TST <ea>	0100.101.0ss.eee.aaa				x	x	x	1	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x																																									Destination Tested → Condition Codes						
-182	UNLK	UNLK An	0100.111.001.011.nnn							1	x		x																																																									An → SP; (SP) → An; SP + 4 → SP						
-183	UNPK	UNPK -(Ax),-(Ay),#<data16>	1000.yyy.110.001.xxx	<data16>						2	x					x																				x																																		Source (Packed BCD) + Adjustment → Destination (Unpacked BCD)						
-184	UNPK	UNPK Dx,Dy,#<data16>	1000.yyy.110.000.xxx	<data16>						2	x	x																				x																																						Source (Packed BCD) + Adjustment → Destination (Unpacked BCD)						
+71	DBcc	DBcc Dn,#<data16>	0101.cccc.11.001.nnn							2	x	x																																						16																				If Condition False Then (Dn – 1 → Dn; If Dn ≠ – 1 Then PC + dn → PC)						
+72	DIVS	DIVS <ea>,Dn	1000.nnn.111.eee.aaa					x		2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x		32		x																																						[Signed] Destination(32) ÷ Source(32) → Destination(32) = remainder(16).quotient(16))						
+73	DIVS	DIVS <ea>,Dq	0100.110.001.eee.aaa	0.qqq.100.000.000.qqq					x	2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x		32		x																																						[Signed] Destination(32 )÷ Source(32) → Destination(32) = quotient(32)	x					
+74	DIVS	DIVS <ea>,Dr:Dq	0100.110.001.eee.aaa	0.qqq.110.000.000.rrr					x	2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x		32		x:x																																						[Signed] Destination(64:Dr.Dq) ÷ Source(32) → Destination(64) = remainder(32:Dr).quotient(32:Dq)	x					
+75	DIVSL	DIVSL <ea>,Dr:Dq	0100.110.001.eee.aaa	0.qqq.100.000.000.rrr					x	2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x		32		x:x																																						[Signed] Destination(32:Dq) ÷ Source(32) → Destination(64) = remainder(32:Dr).quotient(32:Dq)	x					
+76	DIVU	DIVU <ea>,Dn	1000.nnn.011.eee.aaa					x		2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	32			x																																						[Unsigned] Destination(32) ÷ Source(32) → Destination(32) = remainder(16).quotient(16))						
+77	DIVU	DIVU <ea>,Dq	0100.110.001.eee.aaa	0.qqq.000.000.000.qqq					x	2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	32			x																																						[Unsigned] Destination(32 )÷ Source(32) → Destination(32) = quotient(32)	x					
+78	DIVU	DIVU <ea>,Dr:Dq	0100.110.001.eee.aaa	0.qqq.010.000.000.rrr					x	2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	32			x:x																																						[Unsigned] Destination(64:Dr.Dq) ÷ Source(32) → Destination(64) = remainder(32:Dr).quotient(32:Dq)	x					
+79	DIVUL	DIVUL <ea>,Dr:Dq	0100.110.001.eee.aaa	0.qqq.000.000.000.rrr					x	2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	32			x:x																																						[Unsigned] Destination(32:Dq) ÷ Source(32) → Destination(64) = remainder(32:Dr).quotient(32:Dq)	x					
+80	EOR	EOR Dn,<ea>	1011.nnn.1ss.eee.aaa				x	x	x	2		x																			x	x		x	x	x	x	x	x	x	x						x	x																						Source ⊕ Destination → Destination						
+81	EORI	EORI #<data>,<ea>	0000.101.0ss.eee.aaa				x	x	x	2																			x		x	x		x	x	x	x	x	x	x	x						x	x																						Immediate Data ⊕ Destination → Destination						
+82	EORI	EORI #<data8>,CCR	0000.101.000.111.100				x			2																			8		CCR																																							Source ⊕ CCR → CCR						
+83	EXG	EXG Dx,Dy	1100.xxx.101.000.yyy							2		x																			x	x																																						Dx ←→ Dy						
+84	EXG	EXG Ax,Ay	1100.xxx.101.001.yyy							2			x																		x		x																																					Ax ←→ Ay						
+85	EXG	EXG Dx,Ay	1100.xxx.110.001.yyy							2		x																			x		x																																					Dx ←→ Ay						
+86	EXT	EXT Dn	0100.100.010.000.nnn					x		1	x	x																																																										Destination Sign-Extended → Destination						
+87	EXT	EXT Dn	0100.100.011.000.nnn						x	1	x	x																																																										Destination Sign-Extended → Destination						
+88	EXTB	EXTB Dn	0100.100.111.000.nnn						x	1	x	x																																																										Destination Sign-Extended → Destination						
+89	ILLEGAL	ILLEGAL	0100.101.011.111.100							0																																																												SSP – 2 → SSP; Vector Offset → (SSP); SSP – 4 → SSP; PC → (SSP); SSP – 2 → SSP; SR → (SSP); Illegal Instruction Vector Address → PC						
+90	JMP	JMP <ea>	0100.111.011.eee.aaa							1	x			x			x	x	x	x	x	x	x	x	x	x	x	x																																										Destination Address → PC						
+91	JSR	JSR <ea>	0100.111.010.eee.aaa							1	x			x			x	x	x	x	x	x	x	x	x	x	x	x																																										SP – 4 → Sp; PC → (SP); Destination Address → PC						
+92	LEA	LEA <ea>,An	0100.nnn.111.eee.aaa						x	2	x			x			x	x	x	x	x	x	x	x	x	x	x	x					x																																					<ea> → An						
+93	LINK	LINK An,#<disp16>	0100.111.001.010.nnn					x		2	x			x																																				16																				SP – 4 → SP; An → (SP); SP → An; SP + dn → SP						
+94	LINK	LINK An,#<disp32>	0100.100.000.001.nnn						x	2	x			x																																				32																				SP – 4 → SP; An → (SP); SP → An; SP + dn → SP						
+95	LSL	LSL Dx,Dy	1110.xxx.1ss.101.yyy				x	x	x	2		x																			x	x																																						Destination Shifted By Count → Destination						
+96	LSL	LSL #<data3.8>,Dy	1110.xxx.1ss.001.yyy				x	x	x	2																			x		x	x																																						Destination Shifted By Count → Destination						
+97	LSL	LSL <ea>	1110.001.111.eee.aaa					x		1	x			x	x	x	x	x	x	x	x						x	x																																										Destination Word Shifted By 1 → Destination						
+98	LSR	LSR Dx,Dy	1110.xxx.0ss.101.yyy				x	x	x	2		x																			x	x																																						Destination Shifted By Count → Destination						
+99	LSR	LSR #<data3.8>,Dy	1110.xxx.0ss.001.yyy				x	x	x	2																			x		x	x																																						Destination Shifted By Count → Destination						
+100	LSR	LSR <ea>	1110.001.011.eee.aaa					x		1	x			x	x	x	x	x	x	x	x						x	x																																										Destination Word Shifted By 1 → Destination						
+101	MOVE	MOVE <ea>,<fb>	00ss.bbb.fff.eee.aaa				x			2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x			x		x	x	x	x	x	x	x	x						x	x																						Source → Destination						
+102	MOVE	MOVE <ea>,<fb>	00ss.bbb.fff.eee.aaa					x	x	2	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x			x		x	x	x	x	x	x	x	x						x	x																						Source → Destination						
+103	MOVEA	MOVEA <ea>,An	00ss.nnn.001.eee.aaa					x	x	2	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x				x																																					Source → Destination						
+104	MOVE	MOVE CCR,<ea>	0100.001.011.eee.aaa					x		2	CCR																				x	x		x	x	x	x	x	x	x	x						x	x																						CCR → Destination						
+105	MOVE	MOVE <ea>,CCR	0100.010.011.eea.aaa					x		2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x		CCR																																							Source → CCR						
+106	MOVE	MOVE SR,<ea>	0100.000.011.eee.aaa					x		2	SR																				x	x		x	x	x	x	x									x	x																						SR → Destination					x	
+107	MOVE16	MOVE16 (Ax)+,(Ay)+	1111.011.000.100.xxx	1.yyy.000.000.000.000						2	x				x																				x																																			Source Block → Destination Block						x
+108	MOVE16	MOVE16 (Ay)+,(xxx).L	1111.011.000.000.nnn							2	x				x																																	x																						Source Block → Destination Block						x
+109	MOVE16	MOVE16 (xxx).L,(Ay)+	1111.011.000.001.nnn							2																		x			x				x																																			Source Block → Destination Block						x
+110	MOVE16	MOVE16 (Ay),(xxx).L	1111.011.000.010.nnn							2	x			x																																		x																						Source Block → Destination Block						x
+111	MOVE16	MOVE16 (xxx).L,(Ay)	1111.011.000.011.nnn							2																		x			x			x																																				Source Block → Destination Block						x
+112	MOVEM	MOVEM <list>,<ea>	0100.100.010.eee.aaa	Register list mask				x		2	(Register list mask)																				x			x		x	x	x	x	x	x						x	x																						Registers → Destination						
+113	MOVEM	MOVEM <list>,<ea>	0100.100.011.eee.aaa	Register list mask					x	2	(Register list mask)																				x			x		x	x	x	x	x	x						x	x																						Registers → Destination						
+114	MOVEM	MOVEM <ea>,<list>	0100.110.010.eee.aaa	Register list mask				x		2	x			x	x		x	x	x	x	x	x	x	x	x	x	x	x			(Register list mask)																																							Source → Registers						
+115	MOVEM	MOVEM <ea>,<list>	0100.110.011.eee.aaa	Register list mask					x	2	x			x	x		x	x	x	x	x	x	x	x	x	x	x	x			(Register list mask)																																							Source → Registers						
+116	MOVEP	MOVEP Dx,(d16,Ay)	0000.xxx.110.001.yyy	<data16>				x		2		x																			x		x																																					Source → Destination						
+117	MOVEP	MOVEP Dx,(d16,Ay)	0000.xxx.111.001.yyy	<data16>					x	2		x																			x		x																																					Source → Destination						
+118	MOVEP	MOVEP (d16,Ay),Dx	0000.xxx.100.001.yyy	<data16>				x		2	x		x																			x																																						Source → Destination						
+119	MOVEP	MOVEP (d16,Ay),Dx	0000.xxx.101.001.yyy	<data16>					x	2	x		x																			x																																						Source → Destination						
+120	MOVEQ	MOVEQ #<data8>,Dn	0111.nnn.0.dddddddd							2																				8		x																																						Immediate Data → Destination						
+121	MULS	MULS <ea>,Dn	1100.nnn.111.eee.aaa					x		2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x			x																																						[Signed] Source(16) × Destination(16) → Destination(32)						
+122	MULS	MULS <ea>,Dl	0100.110.000.eee.aaa	0.lll.100.000.000.000					x	2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x			x																																						[Signed] Source(32) × Destination(32) → Destination(32)	x					
+123	MULS	MULS <ea>,Dh-Dl	0100.110.000.eee.aaa	0.lll.110.000.000.hhh					x	2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x			x-x																																						[Signed] Source(32) × Destination low(32) → Destination(64) = Destination high(32)—Destination low(32)	x					
+124	MULU	MULU <ea>,Dn	1100.nnn.011.eee.aaa					x		2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x			x																																						[Unsigned] Source(16) × Destination(16) → Destination(32)						
+125	MULU	MULU <ea>,Dl	0100.110.000.eee.aaa	0.lll.000.000.000.000					x	2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x			x																																						[Unsigned] Source(32) × Destination(32) → Destination(32)						
+126	MULU	MULU <ea>,Dh-Dl	0100.110.000.eee.aaa	0.lll.010.000.000.hhh					x	2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x			x-x																																						[Unsigned] Source(32) × Destination low(32) → Destination(64) = Destination high(32)—Destination low(32)	x					
+127	NBCD	NBCD <ea>	0100.100.000.eee.aaa				x			1	x	x		x	x	x	x	x	x	x	x						x	x																																										0 – Destination10 – X → Destination						
+128	NEG	NEG <ea>	0100.010.0ss.eee.aaa				x	x	x	1	x	x		x	x	x	x	x	x	x	x						x	x																																										0 – Destination → Destination						
+129	NEGX	NEGX <ea>	0100.000.0ss.eee.aaa				x	x	x	1	x	x		x	x	x	x	x	x	x	x						x	x																																										0 – Destination – X → Destination						
+130	NOP	NOP	0100.111.001.110.001							0																																																												No operation, does wait any pending bus cycles before proceeding.						
+131	NOT	NOT <ea>	0100.011.0ss.eee.aaa				x	x	x	1	x	x		x	x	x	x	x	x	x	x						x	x																																										~Destination → Destination						
+132	OR	OR <ea>,Dn	1000.nnn.0ss.eee.aaa				x	x	x	2	x	x		x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x			x																																						Source V Destination → Destination						
+133	OR	OR Dn,<ea>	1000.nnn.1ss.eee.aaa				x	x	x	2		x																			x			x	x	x	x	x	x	x	x						x	x																						Source V Destination → Destination						
+134	ORI	ORI #<data>,<ea>	0000.000.0ss.eee.aaa				x	x	x	2																			x		x	x		x	x	x	x	x	x	x	x						x	x																						Immediate Data V Destination → Destination						
+135	ORI	ORI #<data8>,CCR	0000.000.000.111.100							2																			x		CCR																																							Immediate Data V CCR → CCR						
+136	PACK	PACK -(Ax),-(Ay),#<data16>	1000.yyy.101.001.xxx	<data16>						3	x					x																					x																																x	Source (Unpacked BCD) + Adjustment → Destination (Packed BCD)	x					
+137	PACK	PACK Dx,Dy,#<data16>	1000.yyy.101.000.xxx	<data16>						3	x	x																				x																																					x	Source (Unpacked BCD) + Adjustment → Destination (Packed BCD)	x					
+138	PEA	PEA <ea>	0100.100.001.eee.aaa							1	x			x			x	x	x	x	x	x	x	x	x	x	x	x																																										SP – 4 → SP; <ea> → (SP)						
+139	ROL	ROL Dx,Dy	1110.xxx.1ss.111.yyy				x	x	x	2		x																			x	x																																						Destination Rotated Left By <count> → Destination						
+140	ROL	ROL #<data3.8>,Dy	1110.ddd.1ss.011.yyy				x	x	x	2																			x		x	x																																						Destination Rotated Left By <count> → Destination						
+141	ROL	ROL <ea>	1110.001.111.eee.aaa					x		1	x			x	x	x	x	x	x	x	x						x	x																																										Destination Rotated Left By 1 → Destination						
+142	ROR	ROR Dx,Dy	1110.xxx.0ss.111.yyy				x	x	x	2		x																			x	x																																						Destination Rotated Right By <count> → Destination						
+143	ROR	ROR #<data3.8>,Dy	1110.ddd.0ss.011.yyy				x	x	x	2																			x		x	x																																						Destination Rotated Right By <count> → Destination						
+144	ROR	ROR <ea>	1110.001.011.eee.aaa					x		1	x																																																											Destination Rotated Right By 1 → Destination						
+145	ROXL	ROXL Dx,Dy	1110.xxx.1ss.110.yyy				x	x	x	2		x																			x	x																																						Destination Rotated Left With X By Count → Destination						
+146	ROXL	ROXL #<data3.8>,Dy	1110.ddd.1ss.010.yyy				x	x	x	2																			x		x	x																																						Destination Rotated Left With X By Count → Destination						
+147	ROXL	ROXL <ea>	1110.010.111.eee.aaa					x		1				x	x	x	x	x	x	x	x						x	x																																										Destination Rotated Left With X By 1 → Destination						
+148	ROXR	ROXL Dx,Dy	1110.xxx.0ss.110.yyy				x	x	x	2		x																			x	x																																						Destination Rotated Right With X By Count → Destination						
+149	ROXR	ROXR #<data3.8>,Dy	1110.ddd.0ss.010.yyy				x	x	x	2																			x		x	x																																						Destination Rotated Right With X By Count → Destination						
+150	ROXR	ROXR <ea>	1110.010.011.eee.aaa					x		1	x			x	x	x	x	x	x	x	x						x	x																																										Destination Rotated Right With X By 1 → Destination						
+151	RTD	RTD #<disp16>	0100.111.001.110.100							1																				16																																								(SP) → PC; SP + 4 + dn → SP			x			
+152	RTM	RTM Dn	0000.011.011.000.nnn							1	x	x																																																										Reload Saved Module State from Stack		x				
+153	RTM	RTM An	0000.011.011.001.nnn							1			x																																																									Reload Saved Module State from Stack		x				
+154	RTR	RTR	0100.111.001.110.111																																																																			(SP) → CCR; SP + 2 → SP; (SP) → PC; SP + 4 → SP						
+155	RTS	RTS	0100.111.001.110.101																																																																			(SP) → PC; SP + 4 → SP						
+156	SBCD	SBCD Dx,Dy	1000.yyy.100.000.xxx				x			2	x	x																				x																																						Destination10 – Source10 – X → Destination						
+157	SBCD	SBCD -(Ax),-(Ay)	1000.yyy.100.001.xxx				x			2	x					x																				x																																		Destination10 – Source10 – X → Destination						
+158	Scc	Scc <ea>	0101.cccc.11.eee.aaa				x			1	x	x		x	x	x	x	x	x	x	x						x	x																																										If Condition True ; Then 1s → Destination ; Else 0s → Destination						
+159	SUB	SUB <ea>,Dn	1001.nnn.1ss.eee.aaa				x	x	x	2	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x			x																																						Destination – Source → Destination						
+160	SUB	SUB Dn,<ea>	1001.nnn.0ss.eee.aaa				x	x	x	2		x																			x			x	x	x	x	x	x	x	x						x	x																						Destination – Source → Destination						
+161	SUBA	SUBA <ea>,An	1001.nnn.011.eee.aaa					x		2	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x				x																																					Destination – Source → Destination						
+162	SUBA	SUBA <ea>,An	1001.nnn.111.eee.aaa						x	2	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x				x																																					Destination – Source → Destination						
+163	SUBI	SUBI #<data>,<ea>	0000.010.0ss.eee.aaa				x	x	x	2																			x		x	x		x	x	x	x	x	x	x	x						x	x																						Destination – Immediate Data → Destination						
+164	SUBQ	SUBQ #<data3.8>,<ea>	0101.ddd.1ss.eee.aaa				x	x	x	2																			3.8		x	x	x	x	x	x	x	x	x	x	x						x	x																						Destination – Immediate Data → Destination						
+165	SUBX	SUBX Dx,Dy	1011.yyy.1ss.000.xxx				x	x	x	2	x	x																				x																																						Destination – Source – X → Destination						
+166	SUBX	SUBX -(Ax),-(Ay)	1011.yyy.1ss.001.xxx				x	x	x	2	x					x																				x																																		Destination – Source – X → Destination						
+167	SWAP	SWAP Dn	0100.100.001.000.nnn							1	x	x																																																										Register 31 – 16 ←→ Register 15 – 0						
+168	TAS	TAS <ea>	0100.101.011.eee.aaa							1	x	x		x	x	x	x	x	x	x	x						x	x																																										Destination Tested → Condition Codes; 1 → Bit 7 of Destination						
+169	TRAP	TRAP #<data4>	0100.1110.0100.dddd							1	x																		4																																									1 → S-Bit of SR;; {*SSP – 2 → SSP; Format/Offset → (SSP);;} SSP – 4 → SSP; PC → (SSP); SSP – 2 → SSP; SR → (SSP);; Vector Address → PC // *The MC68000 and MC68008 do not write vector offset or format code to the system stack.)						
+170	TRAPcc	TRAPcc	0101.cccc.11.111.100																																																																			If cc Then TRAP #7						
+171	TRAPcc	TRAPcc #<data16>	0101.cccc.11.111.010					x		1																			16																																									If cc Then TRAP #7						
+172	TRAPcc	TRAPcc #<data32>	0101.cccc.11.111.011						x	1																			32																																									If cc Then TRAP #7						
+173	TRAPV	TRAPV	0100.111.001.110.110																																																																			If V Then TRAP #7						
+174	TST	TST <ea>	0100.101.0ss.eee.aaa				x	x	x	1	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x	x																																									Destination Tested → Condition Codes						
+175	UNLK	UNLK An	0100.111.001.011.nnn							1	x		x																																																									An → SP; (SP) → An; SP + 4 → SP						
+176	UNPK	UNPK -(Ax),-(Ay),#<data16>	1000.yyy.110.001.xxx	<data16>						2	x					x																				x																																		Source (Packed BCD) + Adjustment → Destination (Unpacked BCD)						
+177	UNPK	UNPK Dx,Dy,#<data16>	1000.yyy.110.000.xxx	<data16>						2	x	x																				x																																						Source (Packed BCD) + Adjustment → Destination (Unpacked BCD)						
