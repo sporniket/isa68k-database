@@ -45,6 +45,10 @@ _ci_only = { composite = ["_coverage_pytest","_coverage_report","_coverage_html"
 ci = { composite = ["clean", "lint_ci", "_ci_only"] }
 _pytest = "python3 -m pytest -vv"
 test = { composite = ["clean", "reformat", "_pytest"] }
+#
+# --- calling tools developped by this module
+#
+db2html = {call = "isa68k_db_lib_by_sporniket.db2html.__main__:main"}
 
 
 [tool.pdm.dev-dependencies]
